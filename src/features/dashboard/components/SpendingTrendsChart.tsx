@@ -17,15 +17,18 @@ const SpendingTrendsChart: React.FC<SpendingTrendsChartProps> = ({ data }) => {
         <LineChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="month" />
-          <YAxis
-            tickFormatter={(value) => `R${value.toLocaleString()}`}
-            width={60}
-          />
+          <YAxis tickFormatter={(value) => `R${value?.toLocaleString()}`} width={60} />
           <Tooltip
-            formatter={(value: number) => [`R${value.toLocaleString()}`, "Spent"]}
+            formatter={(value) => [`R${value?.toLocaleString()}`, "Spent"]}
             labelFormatter={(label) => `Month: ${label}`}
           />
-          <Line type="monotone" dataKey="totalSpent" stroke="#4ECDC4" strokeWidth={3} dot={{ r: 4 }} />
+          <Line
+            type="monotone"
+            dataKey="totalSpent"
+            stroke="#4ECDC4"
+            strokeWidth={3}
+            dot={{ r: 4 }}
+          />
         </LineChart>
       </ResponsiveContainer>
     </div>

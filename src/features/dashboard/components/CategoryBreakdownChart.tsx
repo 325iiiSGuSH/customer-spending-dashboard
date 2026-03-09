@@ -22,15 +22,22 @@ const CategoryBreakdownChart: React.FC<CategoryBreakdownChartProps> = ({ data })
             cx="50%"
             cy="50%"
             outerRadius={100}
-            label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+            label={({ name, percent }) =>
+              `${name}: ${((percent ?? 0) * 100).toFixed(0)}%`
+            }
           >
             {data.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={entry.color} />
             ))}
           </Pie>
+
           <Tooltip
-            formatter={(value: number, name: string) => [`R${value.toLocaleString()}`, name]}
+            formatter={(value) => {
+              const numericValue = typeof value === "number" ? value : Number(value) || 0
+              return [`R${numericValue.toLocaleString()}`, "Amount"]
+            }}
           />
+
           <Legend verticalAlign="bottom" height={36} />
         </PieChart>
       </ResponsiveContainer>

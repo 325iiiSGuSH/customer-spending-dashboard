@@ -1,11 +1,11 @@
 import React, { useState } from "react"
 import ProfileHeader from "./components/ProfileHeader"
-import SummaryCards from "./components/SummaryCards"
+// import SummaryCards from "./components/SummaryCards"
 import FiltersPanel from "./components/FiltersPanel"
 import SpendingTrendsChart from "./components/SpendingTrendsChart"
 import CategoryBreakdownChart from "./components/CategoryBreakdownChart"
-import TransactionsList from "./components/TransactionsList"
-import GoalsWidget from "./components/GoalsWidget"
+// import TransactionsList from "./components/TransactionsList"
+// import GoalsWidget from "./components/GoalsWidget"
 import { useDashboardData } from "./hooks/useDashboardData"
 
 import CapitecLogo from "../../assets/capitec-logo.svg"
@@ -72,10 +72,58 @@ const DashboardPage: React.FC = () => {
         <ProfileHeader profile={profile} />
       </header>
 
-      {/* Summary Cards */}
+      {/* Summary Section */}
       {summary && (
-        <div className={styles.summaryGrid}>
-          <SummaryCards data={summary.items} />
+        <div className={styles.summarySection}>
+
+          {/* Total Spent Card */}
+          <div className={styles.totalSpentCard}>
+            <div className={styles.totalCardHeader}>
+              <div className={styles.cardIcon}>💳</div>
+              <span className={styles.trendIcon}>↗</span>
+            </div>
+
+            <p className={styles.totalLabel}>TOTAL SPENT</p>
+
+            <h2 className={styles.totalAmount}>
+              USD {summary.totalSpent.toLocaleString()}
+            </h2>
+
+            <div className={styles.totalFooter}>
+              Valid thru {summary.period}
+            </div>
+          </div>
+
+
+          {/* Spending Goals */}
+          <div className={styles.goalsPreview}>
+            <h3 className={styles.goalsTitle}>Spending Goals</h3>
+
+            {goals?.slice(0,2).map((goal) => (
+              <div key={goal.id} className={styles.goalItem}>
+
+                <div className={styles.goalHeader}>
+                  <span>{goal.category}</span>
+                  <span>{goal.percentageUsed}%</span>
+                </div>
+
+                <div className={styles.goalProgressBar}>
+                  <div
+                    className={styles.goalProgressFill}
+                    style={{ width: `${goal.percentageUsed}%` }}
+                  />
+                </div>
+
+                <div className={styles.goalAmounts}>
+                  <span>R{goal.currentSpent}</span>
+                  <span>of R{goal.monthlyBudget}</span>
+                </div>
+
+              </div>
+            ))}
+
+          </div>
+
         </div>
       )}
     {/* Filters */}
