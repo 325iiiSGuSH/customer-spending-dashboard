@@ -1,0 +1,311 @@
+/* DashboardPage.module.css */
+
+/* Theme Colors */
+:root {
+  --capitec-blue: #1D4ED8;
+  --capitec-blue-dark: #2563EB;
+  --capitec-yellow: #FBBF24;
+  --capitec-bg-light: #F5F7FA;
+  --capitec-text-dark: #111827;
+  --capitec-text-light: #6B7280;
+  --capitec-success: #10B981;
+  --capitec-warning: #FBBF24;
+}
+
+/* Dashboard Page */
+.dashboardPage {
+  min-height: 100vh;
+  padding: 32px;
+  background: linear-gradient(160deg, var(--capitec-bg-light) 0%, #E8EBF0 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  background: rgba(255,255,255,0.9);
+  padding: 24px 32px;
+
+  border-radius: 24px;
+  border: 1px solid #E0E5EC;
+
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+  backdrop-filter: blur(6px);
+}
+
+.logoSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  height: 50px;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--capitec-blue-dark);
+}
+
+/* Summary Cards */
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap: 24px;
+}
+
+/* Filters Bar Layout */
+.filtersBar {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  align-items: end;
+  width: 100%;
+}
+
+.filtersBar > * {
+  width: 100%;
+}
+
+.filterColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Charts */
+.chartsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px,1fr));
+  gap: 28px;
+}
+
+/* Cards */
+.card {
+  background: linear-gradient(145deg, #ffffff, #fefefe);
+  border-radius: 24px;
+  border: 1px solid #E2E8F0;
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+}
+
+.cardTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--capitec-text-dark);
+  margin-bottom: 22px;
+  border-bottom: 1px solid #E5E7EB;
+  padding-bottom: 8px;
+}
+
+/* Tables */
+.tableContainer {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid #E0E5EC;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.table th {
+  text-align: left;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--capitec-text-light);
+}
+
+.table td {
+  padding: 12px;
+  font-size: 14px;
+  color: var(--capitec-text-dark);
+  border-top: 1px solid #E5E7EB;
+}
+
+.table tr:hover {
+  background: #F3F4F6;
+}
+
+/* Goal Status */
+.goalStatusWarning {
+  color: var(--capitec-warning);
+  font-weight: 600;
+}
+
+.goalStatusOnTrack {
+  color: var(--capitec-success);
+  font-weight: 600;
+}
+
+/* Progress Bars */
+.progressWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progressBar {
+  width: 120px;
+  height: 8px;
+  background: #E5E7EB;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg,var(--capitec-success),#059669);
+  border-radius: 999px;
+  transition: width .4s ease;
+}
+
+.progressFillWarning {
+  height: 100%;
+  background: linear-gradient(90deg,var(--capitec-warning),#D97706);
+  border-radius: 999px;
+  transition: width .4s ease;
+}
+
+.progressText {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--capitec-text-dark);
+}
+
+/* Profile Header */
+.profileCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  background: white;
+  padding: 18px 24px;
+  border-radius: 18px;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+.profileLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  color: white;
+  background: linear-gradient(135deg,var(--capitec-blue-dark),var(--capitec-blue));
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.profileName {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--capitec-text-dark);
+}
+
+.profileEmail {
+  font-size: 13px;
+  color: var(--capitec-text-light);
+}
+
+.profileAccount {
+  font-size: 12px;
+  color: var(--capitec-blue-dark);
+  font-weight: 500;
+}
+
+.profileStats {
+  display: flex;
+  gap: 28px;
+}
+
+.statBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.statLabel {
+  font-size: 11px;
+  color: #9CA3AF;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+.statValue {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--capitec-text-dark);
+}
+
+/* Messages */
+.centerMessage {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--capitec-text-light);
+  font-size: 18px;
+}
+
+.errorMessage {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #EF4444;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width:1024px) {
+  .dashboardPage { padding: 24px; }
+  .chartsGrid { grid-template-columns: 1fr; }
+  .filtersPanel { flex-direction: column; }
+}
+
+@media (max-width:768px) {
+  .header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .title { font-size: 24px; }
+  .summaryGrid { grid-template-columns: 1fr; }
+}
+
+@media (max-width:480px) {
+  .dashboardPage { padding: 16px; }
+  .card { padding: 20px; }
+  .table { min-width: 500px; }
+}
