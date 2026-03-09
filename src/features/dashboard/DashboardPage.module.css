@@ -63,6 +63,61 @@
   gap: 24px;
 }
 
+/* SUMMARY HERO SECTION */
+
+.summarySection{
+  display:grid;
+  grid-template-columns:340px 1fr;
+  gap:28px;
+  align-items:stretch;
+}
+.dashboardWrapper{
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+}
+
+/* HEADER */
+
+.dashboardHeader{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.dashboardTitle{
+  font-size:34px;
+  font-weight:700;
+  color:#0f172a;
+}
+
+.welcomeText{
+  color:#64748b;
+  margin-top:6px;
+  font-size:15px;
+}
+
+/* FILTER BUTTONS */
+
+.dashboardFilters{
+  display:flex;
+  gap:14px;
+}
+
+.dashboardFilters button{
+  padding:10px 18px;
+  border-radius:14px;
+  border:1px solid #e2e8f0;
+  background:white;
+  font-weight:500;
+  cursor:pointer;
+  transition:all .2s;
+}
+
+.dashboardFilters button:hover{
+  background:#f1f5f9;
+}
+
 /* Filters Bar Layout */
 .filtersBar {
   display: grid;
@@ -308,15 +363,6 @@
   .dashboardPage { padding: 16px; }
   .card { padding: 20px; }
   .table { min-width: 500px; }
-}
-
-/* SUMMARY HERO SECTION */
-
-.summarySection{
-  display:grid;
-  grid-template-columns:340px 1fr;
-  gap:28px;
-  align-items:stretch;
 }
 
 /* TOTAL SPENT CARD */

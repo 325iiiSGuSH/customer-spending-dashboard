@@ -1,11 +1,8 @@
 import React, { useState } from "react"
 import ProfileHeader from "./components/ProfileHeader"
-// import SummaryCards from "./components/SummaryCards"
 import FiltersPanel from "./components/FiltersPanel"
 import SpendingTrendsChart from "./components/SpendingTrendsChart"
 import CategoryBreakdownChart from "./components/CategoryBreakdownChart"
-// import TransactionsList from "./components/TransactionsList"
-// import GoalsWidget from "./components/GoalsWidget"
 import { useDashboardData } from "./hooks/useDashboardData"
 
 import CapitecLogo from "../../assets/capitec-logo.svg"
@@ -19,6 +16,7 @@ interface Filters {
 }
 
 const DashboardPage: React.FC = () => {
+
   const customerId = "customer123"
 
   const [filters, setFilters] = useState<Filters>({
@@ -62,22 +60,39 @@ const DashboardPage: React.FC = () => {
   return (
     <div className={styles.dashboardPage}>
 
-      {/* Header */}
+      {/* ================= HEADER ================= */}
+
       <header className={styles.header}>
-        <div className={styles.logoSection}>
-          <img src={CapitecLogo} alt="Capitec Logo" className={styles.logo}/>
-          <h1 className={styles.title}>Dashboard</h1>
+
+        <div className={styles.headerLeft}>
+          <img
+            src={CapitecLogo}
+            alt="Capitec Logo"
+            className={styles.logo}
+          />
         </div>
 
         <ProfileHeader profile={profile} />
+
       </header>
 
-      {/* Summary Section */}
+
+      {/* ================= SUMMARY ================= */}
+          <div>
+            {/* <h1 className={styles.title}>Dashboard</h1> */}
+
+            {profile && (
+              <p className={styles.welcomeMessage}>
+                Welcome back, <strong>{profile.name}</strong>. Here's your financial overview.
+              </p>
+            )}
+          </div>
       {summary && (
         <div className={styles.summarySection}>
 
           {/* Total Spent Card */}
           <div className={styles.totalSpentCard}>
+
             <div className={styles.totalCardHeader}>
               <div className={styles.cardIcon}>💳</div>
               <span className={styles.trendIcon}>↗</span>
@@ -86,20 +101,23 @@ const DashboardPage: React.FC = () => {
             <p className={styles.totalLabel}>TOTAL SPENT</p>
 
             <h2 className={styles.totalAmount}>
-              R {summary.totalSpent.toLocaleString()}
+              {profile?.currency} {summary.totalSpent.toLocaleString()}
             </h2>
 
             <div className={styles.totalFooter}>
               Valid thru {summary.period}
             </div>
+
           </div>
 
 
-          {/* Spending Goals */}
+          {/* Goals Preview */}
           <div className={styles.goalsPreview}>
+
             <h3 className={styles.goalsTitle}>Spending Goals</h3>
 
-            {goals?.slice(0,2).map((goal) => (
+            {goals?.slice(0, 2).map((goal) => (
+
               <div key={goal.id} className={styles.goalItem}>
 
                 <div className={styles.goalHeader}>
@@ -120,34 +138,41 @@ const DashboardPage: React.FC = () => {
                 </div>
 
               </div>
+
             ))}
 
           </div>
 
         </div>
       )}
-    {/* Filters */}
-    <div className={styles.card}>
-    <div className={styles.filtersBar}>
-        {/* Left Column */}
-        <div className={styles.filterColumn}>
-        <FiltersPanel
-            categories={[]} // pass empty array
+
+
+      {/* ================= FILTERS ================= */}
+
+      <div className={styles.card}>
+
+        <div className={styles.filtersBar}>
+
+          <FiltersPanel
+            categories={[]}
             dateRangePresets={[
-            { label: "Last 7 days", value: "7d" },
-            { label: "Last 30 days", value: "30d" },
-            { label: "Last 90 days", value: "90d" },
-            { label: "Last year", value: "1y" },
+              { label: "Last 7 days", value: "7d" },
+              { label: "Last 30 days", value: "30d" },
+              { label: "Last 90 days", value: "90d" },
+              { label: "Last year", value: "1y" },
             ]}
             onChange={handleFiltersChange}
-        />
+          />
+
         </div>
 
-    </div>
-    </div>
+      </div>
 
-      {/* Charts */}
+
+      {/* ================= CHARTS ================= */}
+
       <div className={styles.chartsGrid}>
+
         <div className={styles.card}>
           <h2 className={styles.cardTitle}>Spending Trends</h2>
           <SpendingTrendsChart data={trends ?? []} />
@@ -157,68 +182,99 @@ const DashboardPage: React.FC = () => {
           <h2 className={styles.cardTitle}>Category Breakdown</h2>
           <CategoryBreakdownChart data={categories ?? []} />
         </div>
+
       </div>
 
-      {/* Transactions */}
-        <div className={styles.card}>
+
+      {/* ================= TRANSACTIONS ================= */}
+
+      <div className={styles.card}>
+
         <h2 className={styles.cardTitle}>Transactions</h2>
 
         {transactions?.length ? (
-            <div className={styles.tableContainer}>
+
+          <div className={styles.tableContainer}>
+
             <table className={styles.table}>
-                <thead>
+
+              <thead>
                 <tr>
-                    <th>Merchant</th>
-                    <th>Description</th>
-                    <th>Category</th>
-                    <th>Payment</th>
-                    <th>Date</th>
-                    <th>Amount</th>
+                  <th>Merchant</th>
+                  <th>Description</th>
+                  <th>Category</th>
+                  <th>Payment</th>
+                  <th>Date</th>
+                  <th>Amount</th>
                 </tr>
-                </thead>
+              </thead>
 
-                <tbody>
+              <tbody>
+
                 {transactions.map((tx) => (
-                    <tr key={tx.id}>
-                    <td>{tx.merchant}</td>
-                    <td>{tx.description}</td>
-                    <td>{tx.category}</td>
-                    <td>{tx.paymentMethod}</td>
-                    <td>{tx.date}</td>
-                    <td className={styles.transactionAmountDebit}>
-                        R{tx.amount.toFixed(2)}
-                    </td>
-                    </tr>
-                ))}
-                </tbody>
-            </table>
-            </div>
-        ) : (
-            <p>No transactions found.</p>
-        )}
-        </div>
 
-        {/* Goals */}
-        <div className={styles.card}>
+                  <tr key={tx.id}>
+
+                    <td>{tx.merchant}</td>
+
+                    <td>{tx.description}</td>
+
+                    <td>{tx.category}</td>
+
+                    <td>{tx.paymentMethod}</td>
+
+                    <td>{tx.date}</td>
+
+                    <td className={styles.transactionAmountDebit}>
+                      R{tx.amount.toFixed(2)}
+                    </td>
+
+                  </tr>
+
+                ))}
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        ) : (
+          <p>No transactions found.</p>
+        )}
+
+      </div>
+
+
+      {/* ================= GOALS ================= */}
+
+      <div className={styles.card}>
+
         <h2 className={styles.cardTitle}>Goals</h2>
 
         {goals?.length ? (
-            <div className={styles.tableContainer}>
-            <table className={styles.table}>
-                <thead>
-                <tr>
-                    <th>Category</th>
-                    <th>Budget</th>
-                    <th>Spent</th>
-                    <th>Usage</th>
-                    <th>Days Left</th>
-                    <th>Status</th>
-                </tr>
-                </thead>
 
-                <tbody>
+          <div className={styles.tableContainer}>
+
+            <table className={styles.table}>
+
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Budget</th>
+                  <th>Spent</th>
+                  <th>Usage</th>
+                  <th>Days Left</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+
+              <tbody>
+
                 {goals.map((goal) => (
-                    <tr key={goal.id}>
+
+                  <tr key={goal.id}>
+
                     <td>{goal.category}</td>
 
                     <td>R{goal.monthlyBudget.toFixed(2)}</td>
@@ -226,44 +282,57 @@ const DashboardPage: React.FC = () => {
                     <td>R{goal.currentSpent.toFixed(2)}</td>
 
                     <td>
-                        <div className={styles.progressWrapper}>
+
+                      <div className={styles.progressWrapper}>
+
                         <div className={styles.progressBar}>
-                            <div
+
+                          <div
                             className={
-                                goal.status === "warning"
+                              goal.status === "warning"
                                 ? styles.progressFillWarning
                                 : styles.progressFill
                             }
                             style={{ width: `${goal.percentageUsed}%` }}
-                            />
+                          />
+
                         </div>
 
                         <span className={styles.progressText}>
-                            {goal.percentageUsed}%
+                          {goal.percentageUsed}%
                         </span>
-                        </div>
+
+                      </div>
+
                     </td>
 
                     <td>{goal.daysRemaining} days</td>
 
                     <td
-                        className={
+                      className={
                         goal.status === "warning"
-                            ? styles.goalStatusWarning
-                            : styles.goalStatusOnTrack
-                        }
+                          ? styles.goalStatusWarning
+                          : styles.goalStatusOnTrack
+                      }
                     >
-                        {goal.status}
+                      {goal.status}
                     </td>
-                    </tr>
+
+                  </tr>
+
                 ))}
-                </tbody>
+
+              </tbody>
+
             </table>
-            </div>
+
+          </div>
+
         ) : (
-            <p>No goals set yet.</p>
+          <p>No goals set yet.</p>
         )}
-        </div>
+
+      </div>
 
     </div>
   )
