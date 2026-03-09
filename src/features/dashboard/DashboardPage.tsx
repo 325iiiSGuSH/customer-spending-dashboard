@@ -86,7 +86,7 @@ const DashboardPage: React.FC = () => {
             <p className={styles.totalLabel}>TOTAL SPENT</p>
 
             <h2 className={styles.totalAmount}>
-              USD {summary.totalSpent.toLocaleString()}
+              R {summary.totalSpent.toLocaleString()}
             </h2>
 
             <div className={styles.totalFooter}>
