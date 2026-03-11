@@ -2,14 +2,24 @@
 
 /* Theme Colors */
 :root {
-  --capitec-blue: #1D4ED8;
-  --capitec-blue-dark: #2563EB;
-  --capitec-yellow: #FBBF24;
-  --capitec-bg-light: #F5F7FA;
-  --capitec-text-dark: #111827;
-  --capitec-text-light: #6B7280;
+  --capitec-blue: #2563EB;
+  --capitec-blue-dark: #1E3A8A;
+
+  --capitec-accent: #3B82F6;
+
+  --capitec-bg-light: #F6F8FC;
+  --capitec-bg-glass: rgba(255,255,255,0.75);
+
+  --capitec-text-dark: #0F172A;
+  --capitec-text-light: #64748B;
+
+  --capitec-border: #E2E8F0;
+
   --capitec-success: #10B981;
-  --capitec-warning: #FBBF24;
+  --capitec-warning: #F59E0B;
+
+  --capitec-shadow-soft: 0 10px 30px rgba(0,0,0,0.08);
+  --capitec-shadow-premium: 0 20px 45px rgba(15,23,42,0.15);
 }
 
 /* Dashboard Page */
@@ -137,6 +147,26 @@
   gap: 16px;
 }
 
+select {
+  padding:10px 14px;
+  border-radius:10px;
+  border:1px solid var(--capitec-border);
+  font-size:14px;
+  background:white;
+  transition: all .2s ease;
+
+}
+
+select:hover{
+  border-color:var(--capitec-blue);
+}
+
+select:focus{
+  outline:none;
+  border-color:var(--capitec-blue);
+  box-shadow:0 0 0 2px rgba(37,99,235,0.15);
+}
+
 /* Charts */
 .chartsGrid {
   display: grid;
@@ -146,17 +176,20 @@
 
 /* Cards */
 .card {
-  background: linear-gradient(145deg, #ffffff, #fefefe);
-  border-radius: 24px;
-  border: 1px solid #E2E8F0;
-  padding: 28px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  transition: transform .25s ease, box-shadow .25s ease;
+  background: linear-gradient(145deg,#ffffff,#f8fafc);
+  border-radius: 26px;
+  border: 1px solid var(--capitec-border);
+
+  padding: 30px;
+
+  box-shadow: var(--capitec-shadow-soft);
+
+  transition: all .3s ease;
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+.card:hover{
+  transform: translateY(-8px);
+  box-shadow: var(--capitec-shadow-premium);
 }
 
 .cardTitle {
