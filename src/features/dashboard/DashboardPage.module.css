@@ -325,24 +325,30 @@ select:focus{
 }
 
 .goalName{
-  font-weight:600;
+  font-weight:800;
+  font-size:20px;
+  letter-spacing:0.2px;
+  color:#0f172a;
 }
 .goalDays{
-  font-size:12px;
+  font-size:14px;
   color:#64748b;
+  font-weight:500;
 }
 
 .goalPercent{
   margin-left:auto;
-  font-weight:600;
+  font-weight:900;
+  font-size:22px;
+  color:#0f172a;
 }
 
 .goalProgressBar{
-  height:8px;
+  height:40px;
   background:#e5e7eb;
   border-radius:999px;
   overflow:hidden;
-  margin:10px 0;
+  margin:12px 0;
 }
 
 .goalProgressFill{
@@ -355,13 +361,18 @@ select:focus{
 .goalAmounts{
   display:flex;
   justify-content:space-between;
-  font-size:13px;
-  color:#64748b;
+  font-size:18px;
+  color:#344965;
 }
 
 .goalSpent{
   color:#dc2626;
-  font-weight:600;
+  font-weight:900;
+}
+.goalInfo{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
 }
 /* Tables */
 .tableContainer {
