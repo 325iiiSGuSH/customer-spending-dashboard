@@ -4,7 +4,7 @@ import FiltersPanel from "./components/FiltersPanel"
 import SpendingTrendsChart from "./components/SpendingTrendsChart"
 import CategoryBreakdownChart from "./components/CategoryBreakdownChart"
 import { useDashboardData } from "./hooks/useDashboardData"
-
+import { Wallet, TrendingUp, Target, Utensils, Car } from "lucide-react";
 import CapitecLogo from "../../assets/capitec-logo.svg"
 import styles from "./DashboardPage.module.css"
 
@@ -78,68 +78,120 @@ const DashboardPage: React.FC = () => {
 
 
       {/* ================= SUMMARY ================= */}
-          <div>
-            {/* <h1 className={styles.title}>Dashboard</h1> */}
 
-            {profile && (
-              <p className={styles.welcomeMessage}>
-                Welcome back, <strong>{profile.name}</strong>. Here's your financial overview.
-              </p>
-            )}
-          </div>
+      <div className={styles.summaryHeader}>
+        {profile && (
+          <p className={styles.welcomeMessage}>
+            Welcome back, <strong>{profile.name}</strong>. Here's your financial overview.
+          </p>
+        )}
+      </div>
+
       {summary && (
         <div className={styles.summarySection}>
 
-          {/* Total Spent Card */}
-          <div className={styles.totalSpentCard}>
+          {/* TOTAL SPENT CARD */}
+        <div className={styles.totalSpentCard}>
 
-            <div className={styles.totalCardHeader}>
-              <div className={styles.cardIcon}>💳</div>
-              <span className={styles.trendIcon}>↗</span>
+          <div className={styles.totalCardHeader}>
+            <div className={styles.cardIcon}>
+              <Wallet size={22}/>
             </div>
 
-            <p className={styles.totalLabel}>TOTAL SPENT</p>
+            <TrendingUp
+              size={20}
+              className={styles.trendIcon}
+            />
+          </div>
 
-            <h2 className={styles.totalAmount}>
-              {profile?.currency} {summary.totalSpent.toLocaleString()}
-            </h2>
+          <p className={styles.totalLabel}>TOTAL SPENT</p>
 
+          <h2 className={styles.totalAmount}>
+            {profile?.currency} {summary.totalSpent.toLocaleString()}
+          </h2>
+
+          {/* Bottom Row */}
+          <div className={styles.cardBottomRow}>
             <div className={styles.totalFooter}>
               Valid thru {summary.period}
             </div>
 
+            <div className={styles.cardBrand}>
+              <span className={styles.circleRed}></span>
+              <span className={styles.circleOrange}></span>
+            </div>
           </div>
 
+        </div>
 
-          {/* Goals Preview */}
+          {/* GOALS */}
+
           <div className={styles.goalsPreview}>
 
-            <h3 className={styles.goalsTitle}>Spending Goals</h3>
+            <div className={styles.goalsTitle}>
+              <Target size={18} />
+              Spending Goals
+            </div>
 
-            {goals?.slice(0, 2).map((goal) => (
+            <div className={styles.goalsGrid}>
 
-              <div key={goal.id} className={styles.goalItem}>
+              {goals?.slice(0,2).map((goal,index)=>{
 
-                <div className={styles.goalHeader}>
-                  <span>{goal.category}</span>
-                  <span>{goal.percentageUsed}%</span>
-                </div>
+                const icon =
+                  goal.category.toLowerCase().includes("food")
+                    ? <Utensils size={18}/>
+                    : <Car size={18}/>
 
-                <div className={styles.goalProgressBar}>
-                  <div
-                    className={styles.goalProgressFill}
-                    style={{ width: `${goal.percentageUsed}%` }}
-                  />
-                </div>
+                return (
 
-                <div className={styles.goalAmounts}>
-                  <span>R{goal.currentSpent}</span>
-                  <span>of R{goal.monthlyBudget}</span>
-                </div>
+                  <div key={goal.id} className={styles.goalCard}>
 
-              </div>
+                    <div className={styles.goalTop}>
 
-            ))}
+                      <div className={styles.goalIcon}>
+                        {icon}
+                      </div>
+
+                      <div className={styles.goalInfo}>
+                        <span className={styles.goalName}>
+                          {goal.category}
+                        </span>
+
+                        <span className={styles.goalDays}>
+                          10 days remaining
+                        </span>
+                      </div>
+
+                      <span className={styles.goalPercent}>
+                        {goal.percentageUsed}%
+                      </span>
+
+                    </div>
+
+                    <div className={styles.goalProgressBar}>
+                      <div
+                        className={styles.goalProgressFill}
+                        style={{width:`${goal.percentageUsed}%`}}
+                      />
+                    </div>
+
+                    <div className={styles.goalAmounts}>
+                      <span className={styles.goalSpent}>
+                        R {goal.currentSpent.toLocaleString()}
+                      </span>
+
+                      <span>
+                        of R {goal.monthlyBudget.toLocaleString()}
+                      </span>
+                    </div>
+
+                  </div>
+
+                )
+
+              })}
+
+            </div>
 
           </div>
 
