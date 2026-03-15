@@ -2,6 +2,10 @@
 
 /* Theme Colors */
 :root {
+    /* Premium Fintech Colors */
+  --card-black-1:#0f172a;
+  --card-black-2:#020617;
+  --card-black-3:#1e293b;
   --capitec-blue: #2563EB;
   --capitec-blue-dark: #1E3A8A;
 
@@ -21,6 +25,7 @@
   --capitec-shadow-soft: 0 10px 30px rgba(0,0,0,0.08);
   --capitec-shadow-premium: 0 20px 45px rgba(15,23,42,0.15);
 }
+
 
 /* Dashboard Page */
 .dashboardPage {
@@ -81,6 +86,8 @@
   gap:28px;
   align-items:stretch;
 }
+
+
 .dashboardWrapper{
   display:flex;
   flex-direction:column;
@@ -198,80 +205,103 @@ select:focus{
   padding-bottom: 8px;
 }
 
+/* TOTAL SPENT CARD */
+
 .totalSpentCard{
-  background:linear-gradient(145deg,#1e293b,#0f172a);
-  color:white;
-  padding:30px;
-  border-radius:22px;
-  box-shadow:0 20px 45px rgba(0,0,0,0.35);
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  transition:all .35s ease;
+
+  background: linear-gradient(160deg, #1e293b 0%, #0f172a 60%, #020617 100%);
+
+  color: white;
+
+  padding: 30px;
+
+  border-radius: 24px;
+
+  box-shadow: 0 20px 45px rgba(15,23,42,0.45);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transition: all .35s ease;
 }
 
 .totalSpentCard:hover{
-  transform:translateY(-6px);
-  box-shadow:0 30px 60px rgba(0,0,0,0.45);
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
 }
 
 .totalCardHeader{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .cardIcon{
-  background:rgba(255,255,255,0.08);
-  padding:12px;
-  border-radius:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  background: rgba(255,255,255,0.08);
+  padding: 12px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 .trendIcon{
-  color:#22c55e;
+  color: #4ade80;
+  font-size: 18px;
 }
+
 .totalLabel{
-  margin-top:20px;
-  font-size:12px;
-  letter-spacing:.12em;
-  color:#94a3b8;
+  margin-top: 20px;
+  font-size: 12px;
+  letter-spacing: .12em;
+  color: #94a3b8;
 }
+
 .totalAmount{
-  font-size:40px;
-  font-weight:700;
-  margin-top:6px;
+  font-size: 40px;
+  font-weight: 700;
+  margin-top: 6px;
 }
+
 .totalFooter{
-  margin-top:26px;
-  font-size:12px;
-  color:#94a3b8;
+  margin-top: 26px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.cardBottomRow{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
 }
 
 .cardBrand{
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
 }
 
 .circleRed{
-  width:28px;
-  height:28px;
-  border-radius:50%;
-  background:radial-gradient(circle at 30% 30%,#ff6b6b,#dc2626);
-  position:relative;
-  z-index:2;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ff6b6b, #dc2626);
+  position: relative;
+  z-index: 2;
 }
+
 .circleOrange{
-  width:28px;
-  height:28px;
-  border-radius:50%;
-  background:radial-gradient(circle at 30% 30%,#ffb347,#f97316);
-  margin-left:-10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ffb347, #f97316);
+  margin-left: -10px;
 }
+
 .circleRed,
 .circleOrange{
-  box-shadow:0 3px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
 .cardBottomRow{
   display:flex;
@@ -296,19 +326,25 @@ select:focus{
   margin-bottom:22px;
 }
 
-.goalsGrid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:26px;
+.goalsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px; /* THIS creates the space between the two cards */
 }
 
 .goalCard{
-
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px;
+  /* Drop Shadow */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
   transition:all .25s ease;
 }
 
+
 .goalCard:hover{
   transform:translateY(-4px);
+  box-shadow: 0 16px 35px rgba(0,0,0,0.12);
 }
 
 .goalTop{
@@ -571,102 +607,9 @@ select:focus{
   .table { min-width: 500px; }
 }
 
-/* TOTAL SPENT CARD */
 
-.totalSpentCard{
-  background:linear-gradient(145deg,#0f172a,#312e81);
-  color:white;
-  padding:28px;
-  border-radius:22px;
-  box-shadow:0 20px 40px rgba(0,0,0,0.35);
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-}
 
-.totalCardHeader{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
 
-.cardIcon{
-  background:rgba(255,255,255,0.1);
-  padding:10px;
-  border-radius:12px;
-  font-size:18px;
-}
-
-.trendIcon{
-  color:#4ade80;
-  font-size:18px;
-}
-
-.totalLabel{
-  margin-top:18px;
-  font-size:12px;
-  letter-spacing:.1em;
-  color:#cbd5f5;
-}
-
-.totalAmount{
-  font-size:34px;
-  font-weight:700;
-  margin-top:6px;
-}
-
-.totalFooter{
-  font-size:12px;
-  color:#94a3b8;
-}
-
-/* GOALS PREVIEW */
-
-.goalsPreview{
-  background:white;
-  border-radius:22px;
-  padding:28px;
-  border:1px solid #E5E7EB;
-  box-shadow:0 12px 30px rgba(0,0,0,0.08);
-}
-
-.goalsTitle{
-  font-size:18px;
-  font-weight:600;
-  margin-bottom:18px;
-}
-
-.goalItem{
-  margin-bottom:18px;
-}
-
-.goalHeader{
-  display:flex;
-  justify-content:space-between;
-  font-size:14px;
-  margin-bottom:6px;
-}
-
-.goalProgressBar{
-  height:8px;
-  background:#E5E7EB;
-  border-radius:999px;
-  overflow:hidden;
-}
-
-.goalProgressFill{
-  height:100%;
-  background:#dc2626;
-  border-radius:999px;
-}
-
-.goalAmounts{
-  display:flex;
-  justify-content:space-between;
-  font-size:12px;
-  margin-top:4px;
-  color:#6B7280;
-}
 
 @media (max-width:900px){
   .summarySection{
