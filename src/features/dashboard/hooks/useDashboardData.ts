@@ -55,7 +55,7 @@ export const useDashboardData = ({ customerId, filters }: UseDashboardDataProps)
           email: "michael.peterson@gmail.com",
           joinDate: "2021-08-14",
           accountType: "Private Banking",
-          totalSpent: 948875.45,
+          totalSpent: 1094850.30,
           currency: "ZAR"
         })
 

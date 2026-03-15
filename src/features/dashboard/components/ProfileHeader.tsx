@@ -35,23 +35,23 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({ profile }) => {
       </div>
 
       {/* Right Section */}
-      <div className={styles.profileStats}>
-        
-        <div className={styles.statBlock}>
-          <span className={styles.statLabel}>Total Spent</span>
-          <span className={styles.statValue}>
-            {profile.currency} {profile.totalSpent.toLocaleString()}
-          </span>
-        </div>
+     <div className={styles.profileStats}>
 
-        <div className={styles.statBlock}>
-          <span className={styles.statLabel}>Customer Since</span>
-          <span className={styles.statValue}>
-            {profile.joinDate}
-          </span>
-        </div>
-
+      <div className={styles.statBlock}>
+        <span className={styles.statLabel}>Total Spent</span>
+        <span className={styles.statValue}>
+          {profile.currency} {profile.totalSpent.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+        </span>
       </div>
+
+      <div className={styles.statBlock}>
+        <span className={styles.statLabel}>Customer Since</span>
+        <span className={styles.statValue}>
+          {profile.joinDate}
+        </span>
+      </div>
+
+    </div>
 
     </div>
   )

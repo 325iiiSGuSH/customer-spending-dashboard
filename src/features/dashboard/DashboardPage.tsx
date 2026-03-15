@@ -105,10 +105,13 @@ const DashboardPage: React.FC = () => {
           </div>
 
           <p className={styles.totalLabel}>TOTAL SPENT</p>
-
-          <h2 className={styles.totalAmount}>
-            {profile?.currency} {summary.totalSpent.toLocaleString()}
-          </h2>
+            <h2 className={styles.totalAmount}>
+              {profile?.currency}{" "}
+              {summary.totalSpent.toLocaleString(undefined, {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              })}
+            </h2>
 
           {/* Bottom Row */}
           <div className={styles.cardBottomRow}>
